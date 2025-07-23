@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Upay - Transfer</title>
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #008CFF, #00C6FF);
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    animation: fadeIn 1s ease;
+  }
+  @keyframes fadeIn {
+    from { opacity:0; }
+    to { opacity:1; }
+  }
+  header {
+    text-align: center;
+    padding: 20px 20px 10px;
+  }
+  header img {
+    max-width: 100px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+  }
+  header h1 {
+    margin: 0;
+    font-size: 2em;
+  }
+  header p {
+    margin-top: 6px;
+    font-size: 1em;
+    opacity: 0.9;
+  }
+  .transfer-form {
+    background: rgba(255, 255, 255, 0.15);
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 420px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    animation: slideUp 0.7s ease;
+  }
+  @keyframes slideUp {
+    from { transform: translateY(30px); opacity:0; }
+    to { transform: translateY(0); opacity:1; }
+  }
+  .transfer-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 0.95em;
+  }
+  .transfer-form input, 
+  .transfer-form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;
+    font-size: 1em;
+  }
+  .transfer-form button {
+    width: 100%;
+    padding: 12px;
+    background: #004A99;
+    color: #fff;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s;
+  }
+  .transfer-form button:hover {
+    background: #003366;
+    transform: scale(1.02);
+  }
+  .back-link {
+    text-align: center;
+    margin: 10px auto;
+  }
+  .back-link a {
+    color: #fff;
+    text-decoration: underline;
+    font-size: 0.95em;
+  }
+  footer {
+    text-align: center;
+    margin-top: auto;
+    padding: 10px;
+    font-size: 0.9em;
+    opacity: 0.9;
+  }
+</style>
+</head>
+<body>
+<header>
+  <img src="logo.jpg" alt="Upay Logo">
+  <h1>💸 Transfer</h1>
+  <p>Send money quickly and securely</p>
+</header>
+
+<div class="transfer-form">
+  <label for="fromAccount">🏦 From Account:</label>
+  <select id="fromAccount">
+    <option>Wallet Balance</option>
+    <option>Bank Account</option>
+  </select>
+
+  <label for="toAccount">📞 To Account / Phone Number:</label>
+  <input type="text" id="toAccount" placeholder="Enter account or phone number">
+
+  <label for="recipientName">👤 Recipient Name:</label>
+  <input type="text" id="recipientName" placeholder="Enter recipient name">
+
+  <label for="amount">💰 Amount:</label>
+  <input type="number" id="amount" placeholder="₦0.00">
+
+  <label for="purpose">📝 Purpose / Note (optional):</label>
+  <input type="text" id="purpose" placeholder="e.g., Gift, Bills, etc.">
+
+  <label for="transferType">🔄 Transfer Type:</label>
+  <select id="transferType">
+    <option>Local Bank</option>
+    <option>Mobile Wallet</option>
+    <option>International</option>
+  </select>
+
+  <button onclick="confirmTransfer(success.html)">✅ Transfer Now</button>
+</div>
+
+<div class="back-link">
+  <a href="dashboard.html">← Back to Dashboard</a>
+</div>
+
+<footer>
+  Transfers are processed instantly • Need help? <a href="#" style="color:#fff; text-decoration:underline;">Contact us</a>
+</footer>
+
+<script>
+function confirmTransfer() {
+  const amount = document.getElementById('amount').value;
+  const toAccount = document.getElementById('toAccount').value;
+  if(amount && toAccount){
+    const confirmAction = confirm(Are you sure you want to transfer ₦${amount} to ${toAccount}?);
+    if(confirmAction){
+      // Dummy logic: redirect to success page
+      window.location.href = "success.html";
+    } else {
+      alert("❌ Transfer cancelled.");
+    }
+  } else {
+    alert("⚠️ Please enter amount and recipient account/phone number.");
+  }
+}
+</script>
+</body>
+</html>

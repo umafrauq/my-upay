@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Upay - Me</title>
+<style>
+  body {
+    margin: 0;
+    font-family: sans-serif;
+    background: #f8f9fa;
+    color: #333;
+  }
+  .header {
+    background: #007bff; /* Upay primary color */
+    color: white;
+    text-align: center;
+    padding: 2rem 1rem;
+  }
+  .avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 0.5rem;
+  }
+  .btn {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    margin: 0.3rem;
+    cursor: pointer;
+  }
+  .btn:hover {
+    background: #0056b3;
+  }
+  .edit-btn {
+    background: rgba(255,255,255,0.2);
+    border: 1px solid white;
+  }
+  .main {
+    padding: 1rem;
+  }
+  .wallet {
+    background: white;
+    padding: 1rem;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    text-align: center;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  }
+  .balance {
+    font-size: 1.8rem;
+    margin: 0.5rem 0;
+  }
+  .eye {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+  .wallet-buttons .btn {
+    margin: 0.5rem;
+  }
+  .account ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .account li {
+    background: white;
+    margin-bottom: 0.5rem;
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    box-shadow: 0 0 3px rgba(0,0,0,0.1);
+  }
+  .account a {
+    color: #333;
+    
+  }
+  .logout {
+    text-align: center;
+    margin-top: 1rem;
+    text-decoration: none;
+  }
+  .logout-btn {
+    background: #dc3545; /* red */
+  }
+  button{
+      background-color: blue;
+  }
+  a{
+      text-decoration: none;
+      
+  }
+  .logout-btn:hover {
+    background: #a71d2a;
+  }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="profile">
+    <img src="me.jpeg" alt="User Avatar" class="avatar">
+    <h2>Hello, Umar!</h2>
+    <p>+234 81 4932 1548</p>
+    <button class="btn edit-btn">Edit Profile</button>
+  </div>
+</header>
+
+<main class="main">
+  <section class="wallet">
+    <h3>Wallet Balance</h3>
+    <div class="balance" id="balance">
+      ₦12,500 <button class="eye" onclick="toggleBalance()">👁</button>
+    </div>
+    <div class="wallet-buttons">
+      <button class="btn">Add Money</button>
+      <button class="btn">Withdraw</button>
+    </div>
+  </section>
+
+  <section class="account">
+    <ul>
+      <li><a href="#">Transaction History</a></li>
+      <li><a href="#">Saved Payment Methods</a></li>
+      <li><a href="#">Change Password / PIN</a></li>
+      <li><a href="#">Enable Fingerprint / FaceID</a></li>
+      <li><a href="#">Login History</a></li>
+      <li><a href="#">Enable 2FA</a></li>
+      <li><a href="#">Contact Support</a></li>
+      <li><a href="#">FAQs & About</a></li>
+    </ul>
+  </section>
+
+  <section class="logout">
+      <a href="login.html" onclick="logout()"><button>log out</button></a>
+    
+  </section>
+</main>
+
+<script>
+  let showBalance = true;
+  function toggleBalance() {
+    const balanceEl = document.getElementById('balance');
+    if (showBalance) {
+      balanceEl.innerHTML = '•••••• <button class="eye" onclick="toggleBalance()">👁</button>';
+    } else {
+      balanceEl.innerHTML = '₦12,500 <button class="eye" onclick="toggleBalance()">👁</button>';
+    }
+    showBalance = !showBalance;
+  }
+
+  function logout() {
+    alert('Logged out!');
+    // here you can redirect, e.g.: window.location.href = 'login.html';
+  }
+</script>
+
+</body>
+</html>

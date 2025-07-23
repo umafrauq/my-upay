@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Upay - Live Fuel Prices</title>
+<style>
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background-color: #f2f7fb;
+    color: #333;
+  }
+  header {
+    background-color: #00aaff;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+  }
+  .logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+  }
+  .motto {
+    font-size: 0.9rem;
+    margin-top: 0.2rem;
+    font-style: italic;
+  }
+  nav {
+    background-color: #008fcc;
+    display: flex;
+    justify-content: space-around;
+    padding: 0.6rem 0;
+  }
+  nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 0.9rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  nav a span {
+    font-size: 1.2rem;
+  }
+  nav a:hover {
+    text-decoration: underline;
+  }
+  .content {
+    padding: 1rem;
+    max-width: 500px;
+    margin: auto;
+  }
+  .content p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  .price-card {
+    background-color: white;
+    margin: 0.8rem 0;
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .fuel-type {
+    font-weight: 500;
+    font-size: 1.1rem;
+  }
+  .fuel-price {
+    color: #00aaff;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  .last-updated {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #555;
+    margin-top: 0.5rem;
+  }
+  .live-button {
+    margin-top: 1.5rem;
+    text-align: center;
+  }
+  .live-button a {
+    background-color: #00aaff;
+    color: white;
+    text-decoration: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    display: inline-block;
+    transition: background-color 0.3s;
+  }
+  .live-button a:hover {
+    background-color: #008fcc;
+  }
+  footer {
+    text-align: center;
+    padding: 0.7rem;
+    font-size: 0.9rem;
+    color: #555;
+  }
+</style>
+</head>
+<body>
+<header>
+<div class="logo.jpg">⛽ Upay</div>
+<div class="motto">Live Fuel Prices in Nigeria</div>
+</header>
+<nav>
+<a href="dashboard.html"><span>🏠</span>Home</a>
+<a href="live market.html"><span>📊</span>live market</a>
+<a href="emergency.html"><span>🚨</span>Emergency</a>
+<a href="fuel.html"><span>⛽</span>Fuel</a>
+</nav>
+<div class="content">
+<p>Stay updated with the latest fuel prices across Nigeria. <br></p>
+
+<div class="price-card">
+<div class="fuel-type">Petrol (PMS)</div>
+<div class="fuel-price" id="pms">Loading...</div>
+</div>
+<div class="price-card">
+<div class="fuel-type">Diesel (AGO)</div>
+<div class="fuel-price" id="ago">Loading...</div>
+</div>
+<div class="price-card">
+<div class="fuel-type">Kerosene (DPK)</div>
+<div class="fuel-price" id="dpk">Loading...</div>
+</div>
+<div class="price-card">
+<div class="fuel-type">LPG (Cooking Gas)</div>
+<div class="fuel-price" id="lpg">Loading...</div>
+</div>
+
+<div class="last-updated" id="updated">Last updated: --</div>
+
+<div class="live-button">
+<a href="https://www.globalpetrolprices.com/Nigeria/gasoline_prices/" target="_blank">View Real Live Fuel Prices</a>
+</div>
+</div>
+<footer>
+&copy; 2025 Upay. All rights reserved.
+</footer>
+
+<script>
+  // Count-up animation function
+  function animatePrice(id, newPrice) {
+    const el = document.getElementById(id);
+    const current = parseInt((el.textContent.replace(/\D/g, '')) || 0);
+    const target = parseInt(newPrice);
+    const step = Math.ceil((target - current) / 20);
+    let value = current;
+
+    const timer = setInterval(() => {
+      value += step;
+      if ((step > 0 && value >= target) || (step < 0 && value <= target)) {
+        value = target;
+        clearInterval(timer);
+      }
+      el.textContent = "₦" + value + (id === 'lpg' ? " / kg" : " / L");
+    }, 30);
+  }
+
+  function updateDemoPrices() {
+    const newPMS = 900 + Math.floor(Math.random() * 20);
+    const newAGO = 1560 + Math.floor(Math.random() * 40);
+    const newDPK = 1500 + Math.floor(Math.random() * 30);
+    const newLPG = 1300+ Math.floor(Math.random() * 60);
+
+    animatePrice("pms", newPMS);
+    animatePrice("ago", newAGO);
+    animatePrice("dpk", newDPK);
+    animatePrice("lpg", newLPG);
+
+    var now = new Date();
+    document.getElementById("updated").textContent = "Last updated: " + now.toLocaleString();
+  }
+  updateDemoPrices();
+  setInterval(updateDemoPrices, 3600000); // refresh every hour
+</script>
+</body>
+</html>

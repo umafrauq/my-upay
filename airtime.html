@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Upay - Airtime & Data</title>
+<style>
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background-color: #f2f7fb;
+    color: #333;
+  }
+  header {
+    background-color: #00aaff;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    position: relative;
+  }
+  .logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+  }
+  .motto {
+    font-size: 0.9rem;
+    font-style: italic;
+  }
+  .back-btn {
+    position: absolute;
+    left: 1rem;
+    top: 1.2rem;
+    background-color: white;
+    color: #00aaff;
+    padding: 0.2rem 0.6rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+  nav {
+    background-color: #008fcc;
+    display: flex;
+    justify-content: space-around;
+    padding: 0.6rem 0;
+  }
+  nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 0.9rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  nav a span {
+    font-size: 1.2rem;
+  }
+  nav a:hover {
+    text-decoration: underline;
+  }
+  .content {
+    max-width: 500px;
+    margin: auto;
+    padding: 1rem;
+  }
+  .content p {
+    text-align: center;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+  .network-card {
+    background-color: white;
+    margin: 0.8rem 0;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+    text-align: center;
+  }
+  .network-logo {
+    height: 40px;
+    margin-bottom: 0.5rem;
+  }
+  .buy-button {
+    background-color: #00aaff;
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    margin: 0.3rem;
+  }
+  .buy-button:hover {
+    background-color: #008fcc;
+  }
+  .payment-form {
+    margin-top: 0.7rem;
+    display: none;
+    text-align: left;
+  }
+  .payment-form input, .payment-form select {
+    width: 100%;
+    padding: 0.5rem;
+    margin: 0.3rem 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+  }
+  .payment-form button {
+    width: 100%;
+    background-color: #00aaff;
+    color: white;
+    border: none;
+    padding: 0.6rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  .payment-form button:hover {
+    background-color: #008fcc;
+  }
+  .history-card {
+    background-color: white;
+    margin: 0.8rem 0;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+  }
+  .history-title {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+  .history-item {
+    font-size: 0.9rem;
+    color: #333;
+    border-top: 1px solid #eee;
+    padding: 0.4rem 0;
+  }
+  .last-updated {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #555;
+    margin-top: 0.5rem;
+  }
+  footer {
+    text-align: center;
+    padding: 0.7rem;
+    font-size: 0.9rem;
+    color: #555;
+  }
+</style>
+</head>
+<body>
+<header>
+  <a href="dashboard.html" class="back-btn">← Back</a>
+  <div class="logo">📲 Upay</div>
+  <div class="motto">Buy Airtime & Data Instantly</div>
+</header>
+<nav>
+  <a href="dashboard.html"><span>🏠</span>Home</a>
+  <a href="emergency.html"><span>🚨</span>Emergency</a>
+  <a href="fuel.html"><span>⛽</span>Fuel</a>
+  <a href="live market.html"><span>🛒</span>Market</a>
+  <a href="subscrip.html"><span>📺</span>Cable</a>
+  <a href="electricity.html"><span>⚡</span>Electricity</a>
+</nav>
+<div class="content">
+  <p>Select your network to buy Airtime or Data bundles instantly. Enter details right here!</p>
+
+  <!-- MTN Card -->
+  <div class="network-card">
+
+  <img src="mtn.png" alt="MTN" class="network-logo">
+    <button class="buy-button" onclick="toggleForm('mtn-airtime')">Buy Airtime</button>
+    <button class="buy-button" onclick="toggleForm('mtn-data')">Buy Data</button>
+
+    <div class="payment-form" id="mtn-airtime">
+      <input type="text" placeholder="Phone Number">
+      <input type="number" placeholder="Amount">
+      <button>Confirm & Pay</button>
+    </div>
+    <div class="payment-form" id="mtn-data">
+      <input type="text" placeholder="Phone Number">
+      <select>
+        <option>Select Data Bundle</option>
+        <option>500MB - ₦300</option>
+        <option>1GB - ₦500</option>
+        <option>2GB - ₦1000</option>
+      </select>
+      <button>Confirm & Pay</button>
+    </div>
+  </div>
+
+  <!-- Airtel Card -->
+  <div class="network-card">
+    <img src="airtel.jpg" alt="Airtel" class="network-logo">
+    <button class="buy-button" onclick="toggleForm('airtel-airtime')">Buy Airtime</button>
+    <button class="buy-button" onclick="toggleForm('airtel-data')">Buy Data</button>
+
+    <div class="payment-form" id="airtel-airtime">
+      <input type="text" placeholder="Phone Number">
+      <input type="number" placeholder="Amount">
+      <button>Confirm & Pay</button>
+    </div>
+    <div class="payment-form" id="airtel-data">
+      <input type="text" placeholder="Phone Number">
+      <select>
+        <option>Select Data Bundle</option>
+        <option>500MB - ₦300</option>
+        <option>1GB - ₦500</option>
+        <option>2GB - ₦1000</option>
+      </select>
+      <button>Confirm & Pay</button>
+    </div>
+  </div>
+
+  <!-- Glo Card -->
+  <div class="network-card">
+    <img src="glo.png" alt="Glo" class="network-logo">
+    <button class="buy-button" onclick="toggleForm('glo-airtime')">Buy Airtime</button>
+    <button class="buy-button" onclick="toggleForm('glo-data')">Buy Data</button>
+
+    <div class="payment-form" id="glo-airtime">
+      <input type="text" placeholder="Phone Number">
+      <input type="number" placeholder="Amount">
+      <button>Confirm & Pay</button>
+    </div>
+    <div class="payment-form" id="glo-data">
+      <input type="text" placeholder="Phone Number">
+      <select>
+        <option>Select Data Bundle</option>
+        <option>500MB - ₦300</option>
+        <option>1GB - ₦500</option>
+        <option>2GB - ₦1000</option>
+      </select>
+      <button>Confirm & Pay</button>
+    </div>
+  </div>
+
+  <!-- 9mobile Card -->
+  <div class="network-card">
+    <img src="9mobile.png" alt="9mobile" class="network-logo">
+    <button class="buy-button" onclick="toggleForm('nine-airtime')">Buy Airtime</button>
+    <button class="buy-button" onclick="toggleForm('nine-data')">Buy Data</button>
+
+    <div class="payment-form" id="nine-airtime">
+      <input type="text" placeholder="Phone Number">
+      <input type="number" placeholder="Amount">
+      <button>Confirm & Pay</button>
+    </div>
+    <div class="payment-form" id="nine-data">
+      <input type="text" placeholder="Phone Number">
+      <select>
+        <option>Select Data Bundle</option>
+        <option>500MB - ₦300</option>
+        <option>1GB - ₦500</option>
+        <option>2GB - ₦1000</option>
+      </select>
+      <button>Confirm & Pay</button>
+    </div>
+  </div>
+
+  <div class="history-card">
+    <div class="history-title">Last Purchases</div>
+    <div class="history-item">₦500 MTN Airtime - 15 Jul 2025</div>
+    <div class="history-item">1GB Airtel Data - 12 Jul 2025</div>
+    <div class="history-item">₦200 Glo Airtime - 10 Jul 2025</div>
+  </div>
+
+  <div class="last-updated" id="updated">Last updated: --</div>
+</div>
+<footer>
+  &copy; 2025 Upay. All rights reserved.
+</footer>
+
+<script>
+  function toggleForm(formId) {
+    var form = document.getElementById(formId);
+    form.style.display = form.style.display === "none" || form.style.display === "" ? "block" : "none";
+  }
+  // Update last updated timestamp
+  var now = new Date();
+  document.getElementById("updated").textContent = "Last updated: " + now.toLocaleString();
+</script>
+</body>
+</html>

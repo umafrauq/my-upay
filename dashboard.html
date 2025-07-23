@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Upay Dashboard</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background: #f9f9f9;
+      color: #333;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #5b89de; /* light blue */
+      color: white;
+      padding: 10px 20px;
+      font-size: 20px;
+    }
+    .logo {
+      font-weight: bold;
+    }
+    .welcome {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .welcome img {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .wallet-card {
+      background: white;
+      margin: 20px auto;
+      padding: 20px;
+      max-width: 300px;
+      text-align: center;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .wallet-card h2 {
+      margin: 10px 0 0;
+      color: black;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 0 20px 60px; /* extra bottom padding for footer */
+    }
+    .service {
+      display: block;
+      background: aquamarine;
+      border-radius: 12px;
+      text-align: center;
+      padding: 15px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      font-size: 22px;
+      color: inherit;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .service:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    .service span {
+      display: block;
+      font-size: 14px;
+      margin-top: 5px;
+    }
+    .services-grid .service:last-child {
+      grid-column: span 3;  /* spans full row */
+      max-width: 150px;
+      margin: 0 auto;
+    }
+    footer {
+      display: flex;
+      justify-content: space-around;
+      background: #5b89de; /* blue footer */
+      padding: 10px 0;
+      border-top: 1px solid #ccc;
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+      color: white;
+      padding-bottom: 20px;
+    }
+    .footer-link {
+      text-align: center;
+      font-size: 12px;
+    }
+    .footer-link i {
+      font-size: 18px;
+    }
+</style>
+</head>
+<body>
+<header class="header">
+<div class="logo"><i class=""></i> Upay Dashboards</div>
+<div class="welcome">
+      Welcome, Umar!
+<img src="me.jpeg" alt="Avatar">
+</div>
+</header>
+<main>
+<div class="wallet-card">
+<span>💰  Wallet Balance</span>
+<div class="balance" id="balance">
+  ₦12,500 <button class="eye" onclick="toggleBalance()">👁</button>
+</div>
+</div>
+<div class="services-grid">
+<a href="airtime.html" class="service">📱<span>Airtime/Data</span></a>
+<a href="subscrip.html" class="service">📺<span>Cable Subscription</span></a>
+<a href="fuel.html" class="service">⛽<span>Fuel Prices</span></a>
+<a href="live market.html" class="service">📊<span>Live Market</span></a>
+<a href="emergency.html" class="service">🚨<span>Emergency</span></a>
+<a href="electricity.html" class="service">💡<span>Electricity</span></a>
+<a href="transfer.html" class="service">💸<span>Transfer</span></a>
+</div>
+</main>
+<footer>
+<a href="dashboard.html" class="footer-link"><i class="fas fa-home"><button> 🏠 Home</button></i><br></a>
+<a href="me.html" class="footer-link"><i class="fas fa-user"><button> 👤 Me</button></i><br></a>
+<a href="login.html" class="footer-link"><i class="fas fa-sign-out-alt"><button> 🔓 Log out</button></i><br></a>
+</footer>
+<script>
+let showBalance = true;
+function toggleBalance() {
+  const balanceEl = document.getElementById('balance');
+  if (showBalance) {
+    balanceEl.innerHTML = '****** <button class="eye" onclick="toggleBalance()">👁</button>';
+  } else {
+    balanceEl.innerHTML = '₦12,500 <button class="eye" onclick="toggleBalance()">👁</button>';
+  }
+  showBalance = !showBalance;
+}
+</script>
+</body>
+</html>

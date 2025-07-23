@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Upay - Live Market Prices</title>
+<style>
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background-color: #f2f7fb;
+    color: #333;
+  }
+  header {
+    background-color: #00aaff;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    position: relative;
+  }
+  .logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+  }
+  .motto {
+    font-size: 0.9rem;
+    font-style: italic;
+  }
+  .back-btn {
+    position: absolute;
+    left: 1rem;
+    top: 1.2rem;
+    background-color: white;
+    color: #00aaff;
+    padding: 0.2rem 0.6rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+  nav {
+    background-color: #008fcc;
+    display: flex;
+    justify-content: space-around;
+    padding: 0.6rem 0;
+  }
+  nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 0.9rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  nav a span {
+    font-size: 1.2rem;
+  }
+  nav a:hover {
+    text-decoration: underline;
+  }
+  .content {
+    max-width: 500px;
+    margin: auto;
+    padding: 1rem;
+  }
+  .content p {
+    text-align: center;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+  .food-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+  }
+  .food-gallery img {
+    width: 100%;
+    border-radius: 10px;
+    height: 100px;
+    object-fit: cover;
+  }
+  .price-card {
+    background-color: white;
+    margin: 0.6rem 0;
+    padding: 0.8rem;
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .item-name {
+    font-weight: 500;
+    font-size: 1.1rem;
+  }
+  .item-price {
+    color: #00aaff;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  .last-updated {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #555;
+    margin-top: 0.5rem;
+  }
+  .live-button {
+    margin-top: 1.5rem;
+    text-align: center;
+  }
+  .live-button a {
+    background-color: #00aaff;
+    color: white;
+    text-decoration: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    display: inline-block;
+    transition: background-color 0.3s;
+  }
+  .live-button a:hover {
+    background-color: #008fcc;
+  }
+  footer {
+    text-align: center;
+    padding: 0.7rem;
+    font-size: 0.9rem;
+    color: #555;
+  }
+</style>
+</head>
+<body>
+<header>
+<a href="dashboard.html" class="back-btn">← Back</a>
+<div class="logo.jpg">🛒 Upay</div>
+<div class="motto">Live Market Prices in Nigeria</div>
+</header>
+<nav>
+<a href="dashboard.html"><span>🏠</span>Home</a>
+<a href="emergency.html"><span>🚨</span>Emergency</a>
+<a href="fuel.html"><span>⛽</span>Fuel</a>
+<a href="live market.html"><span>🛒</span>Market</a>
+</nav>
+<div class="content">
+<p>Check today’s market prices for popular food items. Updated daily so you can plan your shopping better!</p>
+
+<div class="food-gallery">
+<img src="rice.jpg" alt="Rice">
+<img src="beans.jpg" alt="Beans">
+<img src="toma.jpg" alt="Tomatoes">
+<img src="yam.jpg" alt="Yam">
+<img src="garri.jpg" alt="Garri">
+<img src="onions.jpg" alt="Onions">
+</div>
+
+<div class="price-card">
+<div class="item-name">Rice (50kg bag)</div>
+<div class="item-price" id="rice">Loading...</div>
+</div>
+<div class="price-card">
+<div class="item-name">Beans (50kg bag)</div>
+<div class="item-price" id="beans">Loading...</div>
+</div>
+<div class="price-card">
+<div class="item-name">Tomatoes (basket)</div>
+<div class="item-price" id="tomatoes">Loading...</div>
+</div>
+<div class="price-card">
+<div class="item-name">Yam (per tuber)</div>
+<div class="item-price" id="yam">Loading...</div>
+</div>
+<div class="price-card">
+<div class="item-name">Garri (50kg bag)</div>
+<div class="item-price" id="garri">Loading...</div>
+</div>
+<div class="price-card">
+<div class="item-name">Onions (bag)</div>
+<div class="item-price" id="onions">Loading...</div>
+</div>
+
+<div class="last-updated" id="updated">Last updated: --</div>
+
+<div class="live-button">
+<a href="https://www.numbeo.com/food-prices/country_result.jsp?country=Nigeria" target="_blank">View Real Live Market Prices</a>
+</div>
+</div>
+<footer>
+&copy; 2025 Upay. All rights reserved.
+</footer>
+
+<script>
+  function animateMarketPrice(id, targetPrice) {
+    const el = document.getElementById(id);
+    let value = 0;
+    const step = Math.ceil(targetPrice / 30);
+    const timer = setInterval(() => {
+      value += step;
+      if (value >= targetPrice) {
+        value = targetPrice;
+        clearInterval(timer);
+      }
+      el.textContent = "₦" + value.toLocaleString();
+    }, 30);
+  }
+
+  function updateDemoMarketPrices() {
+    animateMarketPrice('rice', 77000);
+    animateMarketPrice('beans', 35000);
+    animateMarketPrice('tomatoes', 12000);
+    animateMarketPrice('yam', 800);
+    animateMarketPrice('garri', 27000);
+    animateMarketPrice('onions', 15000);
+
+    var now = new Date();
+    document.getElementById("updated").textContent = "Last updated: " + now.toLocaleString();
+  }
+  updateDemoMarketPrices();
+</script>
+</body>
+</html>

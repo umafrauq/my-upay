@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upay - Sign Up</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #333;
+    }
+    header {
+      background-color: #007BFF; /* Blue header */
+      color: white;
+      padding: 20px 10px;
+      text-align: center;
+    }
+    header img {
+      height: 50px;
+      vertical-align: middle;
+      border-radius: 10px;
+    }
+    header h1 {
+      display: inline;
+      margin-left: 10px;
+      font-size: 28px;
+      vertical-align: middle;
+    }
+    header p {
+      margin: 5px 0 0;
+      font-size: 14px;
+    }
+    .about {
+      text-align: center;
+      padding: 30px 20px;
+      background-color: #eaf2fb;
+    }
+    .about h2 {
+      color: #007BFF;
+      margin-bottom: 10px;
+      font-size: 22px;
+    }
+    .about p {
+      max-width: 600px;
+      margin: auto;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+    .signup-section {
+      background-color: #ffffff;
+      padding: 40px 20px;
+    }
+    .signup-form {
+      max-width: 400px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+    }
+    .signup-form label {
+      margin-bottom: 5px;
+      font-weight: 500;
+    }
+    .signup-form input[type="text"],
+    .signup-form input[type="email"],
+    .signup-form input[type="password"],
+    .signup-form select {
+      padding: 12px 15px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .gender {
+      margin-bottom: 15px;
+    }
+    .gender label {
+      margin-right: 10px;
+      font-weight: normal;
+    }
+    .signup-form button {
+      padding: 14px;
+      background-color: #00aaff; /* Light blue default */
+      border: none;
+      color: white;
+      font-size: 18px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .signup-form button:hover {
+      background-color: #008fcc;
+    }
+    footer {
+      background-color: #007BFF; /* Blue footer */
+      color: white;
+      text-align: center;
+      padding: 15px 10px;
+      font-size: 14px;
+    }
+    footer p {
+      margin: 4px 0;
+    }
+    .social-icons {
+      margin: 10px 0;
+    }
+    .social-icons a {
+      color: white;
+      text-decoration: none;
+      margin: 0 8px;
+      font-size: 18px;
+    }
+    .quick-links {
+      margin-top: 8px;
+    }
+    .quick-links a {
+      color: #cce6ff;
+      text-decoration: none;
+      margin: 0 8px;
+      font-size: 13px;
+    }
+    .quick-links a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="log.jpg" alt="Upay Logo" />
+    <h1>Upay</h1>
+    <p>Pay Smart, Live Easy</p><!-- Motto -->
+  </header>
+  <div class="about">
+    <h2>Welcome to Upay!</h2>
+    <p>
+      Open your Upay wallet today and enjoy seamless payments, airtime top-up, cable subscriptions, and more.
+      With Upay, transactions are fast, secure, and available anytime, anywhere.
+    </p>
+  </div>
+  <div class="signup-section">
+    <form class="signup-form" action="dashboard.html" method="post">
+      <label for="firstName">First Name</label>
+      <input type="text" id="firstName" name="firstName" placeholder="Enter your first name" required>
+      <label for="lastName">Last Name</label>
+      <input type="text" id="lastName" name="lastName" placeholder="Enter your last name" required>
+      <label for="phone">Phone Number</label>
+      <input type="text" id="phone" name="phone" placeholder="e.g. 08123456789" required>
+      <label for="country">Country</label>
+      <select id="country" name="country" required>
+        <option value="">Select your country</option>
+        <option value="Nigeria">Nigeria</option>
+        <option value="Ghana">Ghana</option>
+        <option value="Kenya">Kenya</option>
+        <option value="South Africa">South Africa</option>
+        <option value="Egypt">Egypt</option>
+        <option value="Cameroon">Cameroon</option>
+      </select>
+      <div class="gender">
+        <label>Gender:</label>
+        <label><input type="radio" name="gender" value="male" required> Male</label>
+        <label><input type="radio" name="gender" value="female" required> Female</label>
+      </div>
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="example@email.com" required>
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" placeholder="Enter password" required>
+      <label for="confirmPassword">Confirm Password</label>
+      <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm password" required>
+      <a href="login.html"><button type="submit">Sign Up</button></a>
+    </form>
+  </div>
+  <footer>
+    <div class="social-icons">
+      <a href="#">🐦</a>
+      <a href="#">📷</a>
+      <a href="#">📱</a>
+    </div>
+    <div class="quick-links">
+      <a href="#">About</a> | 
+      <a href="#">Help</a> | 
+      <a href="#">Contact</a>
+    </div>
+    <p>&copy; 2025 Upay. All rights reserved.</p>
+    <p>Contact us: support@upay.com</p>
+  </footer>
+</body>
+</html>

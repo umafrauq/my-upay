@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Upay - Login</title>
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #e0f0fa; /* Upay light blue background */
+  }
+  .login-container {
+    width: 300px;
+    margin: 60px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.1);
+    text-align: center;
+  }
+  .logo {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+  }
+  .submit{
+    color: white;
+    background-color: rgb(0, 162, 255);
+    border-radius: 5px;
+  }
+  .login-container h2 {
+    color: #2196f3; /* Upay blue */
+    margin-bottom: 20px;
+  }
+  input[type="tel"],
+  input[type="password"] {
+    width: 90%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  .login-button {
+    width: 94%;
+    padding: 10px;
+    margin-top: 10px;
+    background: #2196f3;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .fingerprint {
+    font-size: 40px;
+    margin: 15px 0;
+    cursor: pointer;
+  }
+  .forgot {
+    display: block;
+    margin: 10px 0;
+    font-size: 14px;
+    color: #2196f3;
+    text-decoration: none;
+  }
+  footer {
+    margin-top: 20px;
+    font-size: 13px;
+    color:rgb(0, 102, 255);
+  }
+</style>
+</head>
+<body>
+  <div class="login-container">
+    <!-- Replace 'upay-logo.png' with your actual logo file -->
+    <img src="logo.jpg" alt="Upay Logo" class="logo">
+    <h2>Upay Login</h2>
+    <input type="tel" placeholder="Phone Number" required><br>
+    <input type="password" placeholder="Password" required><br>
+   <a href="dashboard.html"> <button class="submit">Login</button></a>
+    <div class="fingerprint">🫆</div>
+    <a class="forgot" href="#">Forgotten password? Click here</a>
+  </div>
+  
+</body>
+</html>

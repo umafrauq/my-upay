@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Upay - Cable Subscription</title>
+<style>
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background-color: #f2f7fb;
+    color: #333;
+  }
+  header {
+    background-color: #00aaff;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    position: relative;
+  }
+  .logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+  }
+  .motto {
+    font-size: 0.9rem;
+    font-style: italic;
+  }
+  .back-btn {
+    position: absolute;
+    left: 1rem;
+    top: 1.2rem;
+    background-color: white;
+    color: #00aaff;
+    padding: 0.2rem 0.6rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+  nav {
+    background-color: #008fcc;
+    display: flex;
+    justify-content: space-around;
+    padding: 0.6rem 0;
+  }
+  nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 0.9rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  nav a span {
+    font-size: 1.2rem;
+  }
+  nav a:hover {
+    text-decoration: underline;
+  }
+  .content {
+    max-width: 500px;
+    margin: auto;
+    padding: 1rem;
+  }
+  .content p {
+    text-align: center;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+  .cable-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+  }
+  .cable-gallery img {
+    width: 100%;
+    border-radius: 10px;
+    height: 100px;
+    object-fit: contain;
+    background: white;
+    padding: 0.5rem;
+  }
+  .price-card {
+    background-color: white;
+    margin: 0.6rem 0;
+    padding: 0.8rem;
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .package-name {
+    font-weight: 500;
+    font-size: 1.1rem;
+  }
+  .package-price {
+    color: #00aaff;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  .last-updated {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #555;
+    margin-top: 0.5rem;
+  }
+  .pay-button {
+    margin-top: 1.5rem;
+    text-align: center;
+  }
+  .pay-button a {
+    background-color: #00aaff;
+    color: white;
+    text-decoration: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    display: inline-block;
+    transition: background-color 0.3s;
+  }
+  .pay-button a:hover {
+    background-color: #008fcc;
+  }
+  footer {
+    text-align: center;
+    padding: 0.7rem;
+    font-size: 0.9rem;
+    color: #555;
+  }
+</style>
+</head>
+<body>
+<header>
+  <a href="dashboard.html" class="back-btn">← Back</a>
+  <div class="logo.jpg">📺 Upay</div>
+  <div class="motto">Cable Subscription Made Easy</div>
+</header>
+<nav>
+  <a href="dashboard.html"><span>🏠</span>Home</a>
+  <a href="emergency.html"><span>🚨</span>Emergency</a>
+  <a href="fuel.html"><span>⛽</span>Fuel</a>
+  <a href="live market.html"><span>🛒</span>Market</a>
+</nav>
+<div class="content">
+  <p>Stay connected to your favorite channels. Check prices and pay your cable subscription easily with Upay!</p>
+
+  <div class="cable-gallery">
+    <img src="dstv.jpg" alt="DStv">
+    <img src="gotv.jpg" alt="GOtv">
+    <img src="startimes.jpg" alt="Startimes">
+    <img src="showmax.jpg" alt="Showmax">
+  </div>
+
+  <div class="price-card">
+    <div class="package-name">DStv Premium</div>
+    <div class="package-price" id="dstv">Loading...</div>
+  </div>
+  <div class="price-card">
+    <div class="package-name">GOtv Max</div>
+    <div class="package-price" id="gotv">Loading...</div>
+  </div>
+  <div class="price-card">
+    <div class="package-name">Startimes Classic</div>
+    <div class="package-price" id="startimes">Loading...</div>
+  </div>
+  <div class="price-card">
+    <div class="package-name">Showmax Monthly</div>
+    <div class="package-price" id="showmax">Loading...</div>
+  </div>
+
+  <div class="last-updated" id="updated">Last updated: --</div>
+
+  <div class="pay-button">
+    <a href="https://quickteller.com/pay-bills">Pay for your Subscription</a>
+  </div>
+</div>
+<footer>
+  &copy; 2025 Upay. All rights reserved.
+</footer>
+
+<script>
+  function animatePackagePrice(id, targetPrice) {
+    const el = document.getElementById(id);
+    let value = 0;
+    const step = Math.ceil(targetPrice / 30);
+    const timer = setInterval(() => {
+      value += step;
+      if (value >= targetPrice) {
+        value = targetPrice;
+        clearInterval(timer);
+      }
+      el.textContent = "₦" + value.toLocaleString();
+    }, 30);
+  }
+
+  function updateDemoCablePrices() {
+    animatePackagePrice('dstv', 24900);
+    animatePackagePrice('gotv', 4950);
+    animatePackagePrice('startimes', 3800);
+    animatePackagePrice('showmax', 2900);
+
+    var now = new Date();
+    document.getElementById("updated").textContent = "Last updated: " + now.toLocaleString();
+  }
+  updateDemoCablePrices();
+</script>
+</body>
+</html>

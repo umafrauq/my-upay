@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Upay - Emergency Services</title>
+<style>
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background-color: #f2f7fb;
+    color: #333;
+  }
+  header {
+    background-color: #00aaff;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+  }
+  .logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+  }
+  
+  .motto {
+    font-size: 0.9rem;
+    margin-top: 0.2rem;
+    font-style: italic;
+  }
+  .content {
+    padding: 1rem;
+    max-width: 500px;
+    margin: auto;
+  }
+  .content p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+  .service {
+    background-color: white;
+    margin: 0.8rem 0;
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+  }
+  .service:hover {
+    background-color: #e6f6fc;
+    transform: translateY(-2px);
+  }
+  .service-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .service span.icon {
+    font-size: 1.8rem;
+    margin-right: 10px;
+  }
+  .service-title {
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+  }
+  .arrow {
+    font-size: 1rem;
+    transition: transform 0.3s;
+  }
+  .arrow.rotate {
+    transform: rotate(180deg);
+  }
+  .numbers {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.4s ease;
+    text-align: left;
+    margin-top: 0.5rem;
+    font-size: 0.95rem;
+  }
+  .numbers p {
+    margin: 0.4rem 0;
+  }
+  .numbers a {
+    color: #00aaff;
+    text-decoration: none;
+  }
+  .numbers a:hover {
+    text-decoration: underline;
+  }
+  footer {
+    text-align: center;
+    padding: 0.7rem;
+    font-size: 0.9rem;
+    color: #555;
+  }
+</style>
+</head>
+<body>
+<header>
+<div class="logo.jpg">🔷 Upay</div>
+<div class="motto">Your trusted emergency partner</div>
+<a href="dashboard.html"><span>🏠</span>Home</a>
+<a href="live market.html"><span>📊</span>live market</a>
+<a href="emergency.html"><span>🚨</span>Emergency</a>
+<a href="fuel.html"><span>⛽</span>Fuel</a>
+</nav>
+</header>
+<div class="content">
+    <h2>Welcome to UPAY Emergency center.</h2>
+    <p>Here you can quickly access important emergency contacts for police,
+       fire services, Ambulance,Roadside assistance and Medical help in Minna.
+       Simply tap on any service below to view or call the emergency numbers instantly.
+        <p><b><h3>Stay safe- Upay is always with you!</h3></b></p>
+    </p>
+
+<p>Tap a service below to view and call emergency numbers:</p>
+
+<div class="service" onclick="toggleNumbers('police')">
+<div class="service-header">
+<div class="service-title"><span class="icon">🚓</span> Police</div>
+<span class="arrow" id="arrow-police">▼</span>
+</div>
+<div class="numbers" id="police">
+<p><a href="tel:112">Emergency Line: 112</a></p>
+<p><a href="tel:+2348001234567"> CTU Base, bosso road Police HQ: +234 90 5255 7201</a></p>
+<P><a href="tel:+2348001234567">Minna Police HQ (public enquiry): +234 80 3223 3454</a></P>
+</div>
+</div>
+
+<div class="service" onclick="toggleNumbers('fire')">
+<div class="service-header">
+<div class="service-title"><span class="icon">🚒</span> Fire Service</div>
+<span class="arrow" id="arrow-fire">▼</span>
+</div>
+<div class="numbers" id="fire">
+<p><a href="tel:119">Emergency Line: 112</a></p>
+<p><a href="tel:+2348002345678"> Niger State Fire Service HQ: +234 80 6242 0591</a></p>
+<p><a href="tel:number"> Tudun Wada Fed. Service:+234 80 3700 8710</a></p>
+</div>
+</div>
+
+<div class="service" onclick="toggleNumbers('ambulance')">
+<div class="service-header">
+<div class="service-title"><span class="icon">🚑</span> Ambulance</div>
+<span class="arrow" id="arrow-ambulance">▼</span>
+</div>
+<div class="numbers" id="ambulance">
+<p><a href="tel:122">Emergency Line: 122</a></p>
+<p><a href="tel:+2348003456789">Ambulance HQ Minna (standard hospital):+234 80 3700 8710</a></p>
+<p><a href="tel:number">+234 80 2525 3948</a></p>
+</div>
+</div>
+
+<div class="service" onclick="toggleNumbers('roadside')">
+<div class="service-header">
+<div class="service-title"><span class="icon">🛠️</span> Roadside Assistance</div>
+<span class="arrow" id="arrow-roadside">▼</span>
+</div>
+<div class="numbers" id="roadside">
+<p><a href="tel:+2348009876543"> AMA Zuma Hotline: +234 80 7709 1932</a></p>
+<p><a href="tel:+2348007654321">Towing: +234 80 3628 8801</a></p>
+</div>
+</div>
+
+<div class="service" onclick="toggleNumbers('medical')">
+<div class="service-header">
+<div class="service-title"><span class="icon">🏥</span> Medical Helpline</div>
+<span class="arrow" id="arrow-medical">▼</span>
+</div>
+<div class="numbers" id="medical">
+<p><a href="tel:+2348001112222">Dr. Isah Jibril on Call: +234 80 5642 0881</a></p>
+<p><a href="tel:+2348003334444">Health Info: +234 80 3451 5381</a></p>
+</div>
+</div>
+</div>
+<footer>
+&copy; 2025 Upay. All rights reserved.
+</footer>
+
+<script>
+function toggleNumbers(id) {
+  var numbers = document.getElementById(id);
+  var arrow = document.getElementById('arrow-' + id);
+  if (numbers.style.maxHeight && numbers.style.maxHeight !== '0px') {
+    numbers.style.maxHeight = '0px';
+    arrow.classList.remove('rotate');
+  } else {
+    numbers.style.maxHeight = numbers.scrollHeight + 'px';
+    arrow.classList.add('rotate');
+  }
+}
+</script>
+</body>
+</html>

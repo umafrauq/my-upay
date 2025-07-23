@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Upay - Electricity Payment</title>
+<style>
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background-color: #f2f7fb;
+    color: #333;
+  }
+  header {
+    background-color: #00aaff;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    position: relative;
+  }
+  .logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+  }
+  .motto {
+    font-size: 0.9rem;
+    font-style: italic;
+  }
+  .back-btn {
+    position: absolute;
+    left: 1rem;
+    top: 1.2rem;
+    background-color: white;
+    color: #00aaff;
+    padding: 0.2rem 0.6rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+  nav {
+    background-color: #008fcc;
+    display: flex;
+    justify-content: space-around;
+    padding: 0.6rem 0;
+  }
+  nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 0.9rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  nav a span {
+    font-size: 1.2rem;
+  }
+  nav a:hover {
+    text-decoration: underline;
+  }
+  .content {
+    max-width: 500px;
+    margin: auto;
+    padding: 1rem;
+  }
+  .content p {
+    text-align: center;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+  .option-card, .history-card {
+    background-color: white;
+    margin: 0.8rem 0;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+  }
+  .option-title {
+    font-weight: 500;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+  }
+  .pay-button {
+    text-align: center;
+    margin-top: 0.5rem;
+  }
+  .pay-button a {
+    background-color: #00aaff;
+    color: white;
+    text-decoration: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    display: inline-block;
+    transition: background-color 0.3s;
+  }
+  .pay-button a:hover {
+    background-color: #008fcc;
+  }
+  .balance {
+    text-align: center;
+    font-size: 1rem;
+    color: #00aaff;
+    margin-top: 0.4rem;
+  }
+  .last-updated {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #555;
+    margin-top: 0.5rem;
+  }
+  .history-title {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+  .history-item {
+    font-size: 0.9rem;
+    color: #333;
+    border-top: 1px solid #eee;
+    padding: 0.4rem 0;
+  }
+  footer {
+    text-align: center;
+    padding: 0.7rem;
+    font-size: 0.9rem;
+    color: #555;
+  }
+</style>
+</head>
+<body>
+<header>
+  <a href="dashboard.html" class="back-btn">← Back</a>
+  <div class="logo.jpg">⚡ Upay</div>
+  <div class="motto">Pay your Electricity Bills Easily</div>
+</header>
+<nav>
+  <a href="home.html"><span>🏠</span>Home</a>
+  <a href="emergency.html"><span>🚨</span>Emergency</a>
+  <a href="fuel.html"><span>⛽</span>Fuel</a>
+  <a href="live market.html"><span>🛒</span>Market</a>
+  <a href="subscrip.html"><span>📺</span>Cable</a>
+</nav>
+<div class="content">
+  <p>Choose your meter type and pay your AEDC electricity bill quickly. See your balance and history below.</p>
+
+  <div class="option-card">
+    <div class="option-title">Prepaid Meter</div>
+    <div class="balance" id="prepaid-balance">Loading balance...</div>
+    <div class="pay-button">
+      <a href="https://quickteller.com/aedc" target="_blank">Pay Prepaid</a>
+    </div>
+  </div>
+
+  <div class="option-card">
+    <div class="option-title">Postpaid Meter</div>
+    <div class="balance" id="postpaid-balance">Loading outstanding...</div>
+    <div class="pay-button">
+      <a href="https://quickteller.com/aedc" target="_blank">Pay Postpaid</a>
+    </div>
+  </div>
+
+  <div class="history-card">
+    <div class="history-title">Last Payments</div>
+    <div class="history-item">₦5,000 - Prepaid - 12 Jul 2025</div>
+    <div class="history-item">₦3,500 - Postpaid - 03 Jul 2025</div>
+    <div class="history-item">₦4,200 - Prepaid - 22 Jun 2025</div>
+  </div>
+
+  <div class="last-updated" id="updated">Last updated: --</div>
+</div>
+<footer>
+  &copy; 2025 Upay. All rights reserved.
+</footer>
+
+<script>
+  function animateBalance(id, targetAmount, label) {
+    const el = document.getElementById(id);
+    let value = 0;
+    const step = Math.ceil(targetAmount / 30);
+    const timer = setInterval(() => {
+      value += step;
+      if (value >= targetAmount) {
+        value = targetAmount;
+        clearInterval(timer);
+      }
+      el.textContent = label + " ₦" + value.toLocaleString();
+    }, 30);
+  }
+
+  function updateDemoBalances() {
+    animateBalance('prepaid-balance', 2300, "Current prepaid balance:");
+    animateBalance('postpaid-balance', 1500, "Outstanding bill:");
+    var now = new Date();
+    document.getElementById("updated").textContent = "Last updated: " + now.toLocaleString();
+  }
+  updateDemoBalances();
+</script>
+</body>
+</html>
